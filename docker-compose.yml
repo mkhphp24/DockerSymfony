@@ -18,7 +18,8 @@ services:
             - php
             - mysqldb
     php:
-        image: nanoninja/php-fpm:${PHP_VERSION}
+#        image: nanoninja/php-fpm:${PHP_VERSION}
+        build: ./build/php
         restart: always
         volumes:
             - "./etc/php/php.ini:/usr/local/etc/php/conf.d/php.ini"
@@ -26,11 +27,11 @@ services:
             - "./web:/var/www/html"
 #            - "./etc/php/cache:/var/www/html/public/var/cache/dev"
 
-    composer:
-        image: "composer"
-        volumes:
-            - "./web/app:/app"
-        command: install
+#    composer:
+#        image: "composer"
+#        volumes:
+#            - "./web:/app"
+#        command: install
     myadmin:
         image: phpmyadmin/phpmyadmin
         container_name: phpmyadmin
